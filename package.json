@@ -10,9 +10,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.0",
+    "@types/react-leaflet": "^2.5.1",
+    "leaflet": "^1.6.0",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-leaflet": "^2.6.3",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },

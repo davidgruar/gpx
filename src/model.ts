@@ -11,4 +11,5 @@ export type Point = {
     elevation: number;
     time: Moment;
     element: Element;
+    index: number;
 }

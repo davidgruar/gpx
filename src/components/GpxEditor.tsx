@@ -5,7 +5,7 @@ import { TrackMap } from './TrackMap';
 
 const parser = new DOMParser();
 
-const parsePoint = (elem: Element): Point => {
+const parsePoint = (elem: Element, index: number): Point => {
     const elevation = elem.getElementsByTagName("ele")[0]?.innerHTML;
     const time = elem.getElementsByTagName("time")[0]?.innerHTML || "";
     return {
@@ -14,6 +14,7 @@ const parsePoint = (elem: Element): Point => {
         elevation: Number(elevation),
         time: moment(time),
         element: elem,
+        index,
     }
 }
 
