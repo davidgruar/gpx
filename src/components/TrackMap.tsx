@@ -43,40 +43,36 @@ export const TrackMap: FC<TrackMapProps> = ({ track }) => {
         setPoints(updatedPoints);
     }
     return (
-        <div>
-            <h3>Map</h3>
-            <p>{viewport?.zoom}</p>
-            <Map
-                ref={mapRef}
-                center={[centerLat, centerLon]}
-                bounds={[[minLat, minLon], [maxLat, maxLon]]}
-                style={{ width: 1000, height: 1000 }}
-                onViewportChange={vp => setViewport(vp)}
-                maxZoom={19}
-            >
-                <LayersControl>
-                    <LayersControl.BaseLayer name="OSM" checked={true}>
-                        <TileLayer
-                            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        />
-                    </LayersControl.BaseLayer>
-                    <LayersControl.BaseLayer name="Satellite">
-                        <TileLayer
-                            attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-                            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                        />
-                    </LayersControl.BaseLayer>
-                </LayersControl>
-                <Polyline positions={latlngs} />
-                {markerPoints.map(mp => <Marker
-                    key={mp.index}
-                    position={[mp.lat, mp.lon]}
-                    draggable={true}
-                    autoPan={false}
-                    opacity={0.8}
-                    ondrag={(e: any) => onMarkerDrag(mp, e.latlng)} />)}
-            </Map>
-        </div>
+        <Map
+            className="map"
+            ref={mapRef}
+            center={[centerLat, centerLon]}
+            bounds={[[minLat, minLon], [maxLat, maxLon]]}
+            onViewportChange={vp => setViewport(vp)}
+            maxZoom={19}
+        >
+            <LayersControl>
+                <LayersControl.BaseLayer name="OSM" checked={true}>
+                    <TileLayer
+                        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                </LayersControl.BaseLayer>
+                <LayersControl.BaseLayer name="Satellite">
+                    <TileLayer
+                        attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+                        url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                    />
+                </LayersControl.BaseLayer>
+            </LayersControl>
+            <Polyline positions={latlngs} />
+            {markerPoints.map(mp => <Marker
+                key={mp.index}
+                position={[mp.lat, mp.lon]}
+                draggable={true}
+                autoPan={false}
+                opacity={0.8}
+                ondrag={(e: any) => onMarkerDrag(mp, e.latlng)} />)}
+        </Map>
     )
 }

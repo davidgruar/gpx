@@ -45,12 +45,14 @@ export const GpxEditor: React.FC = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={parse}>
-                <textarea placeholder="Paste GPX" value={gpx} onChange={e => setGpx(e.target.value)} />
-                <button>Parse</button>
-            </form>
-            {track && <TrackMap track={track}/>}
+        <div className="editor">
+            <div className="gpx-form">
+                <form onSubmit={parse}>
+                    <textarea placeholder="Paste GPX" value={gpx} onChange={e => setGpx(e.target.value)} />
+                    <button>Parse</button>
+                </form>
+            </div>
+            {track && <TrackMap track={track} />}
         </div>
     )
 }
